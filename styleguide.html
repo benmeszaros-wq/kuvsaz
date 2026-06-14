@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kuvasz Design System — Style Guide</title>
+  <meta name="description" content="The living style guide for a Kuvasz breeder website: tokens, typography and components." />
+
+  <!-- Fonts: Fraunces (display) · Hanken Grotesk (body/UI) · IBM Plex Mono (data) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Design system -->
+  <link rel="stylesheet" href="tokens/tokens.css" />
+  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/utilities.css" />
+
+  <!-- Style-guide-only presentation (not part of the shipped system) -->
+  <style>
+    .sg-header { border-bottom: 1px solid var(--color-border); position: sticky; top: 0; background: color-mix(in srgb, var(--color-bg) 88%, transparent); backdrop-filter: blur(8px); z-index: var(--z-sticky); }
+    .sg-block { padding-block: var(--space-8); border-top: 1px solid var(--color-border); }
+    .sg-block:first-of-type { border-top: none; }
+    .sg-block__head { margin-bottom: var(--space-6); }
+    .sg-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-3); }
+    .sg-swatch { border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; background: var(--color-surface); }
+    .sg-swatch__chip { height: 64px; }
+    .sg-swatch__meta { padding: var(--space-3); }
+    .sg-swatch__name { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-text); }
+    .sg-swatch__hex { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; }
+    .sg-spec { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-5); padding-block: var(--space-4); border-top: 1px dotted var(--color-border-strong); }
+    .sg-spec:first-child { border-top: none; }
+    .sg-spec__note { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); white-space: nowrap; }
+    .sg-label { font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-muted); margin-bottom: var(--space-3); }
+    .sg-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+    .sg-dark-note { color: var(--color-text-on-inverse-muted); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="sg-header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__brand" href="#top">
+          <span class="nav__mark" aria-hidden="true">B</span>
+          Bástya Kuvasz
+        </a>
+        <ul class="nav__links">
+          <li><a class="nav__link" href="#typography">Type</a></li>
+          <li><a class="nav__link" href="#color">Color</a></li>
+          <li><a class="nav__link" href="#components">Components</a></li>
+          <li><a class="nav__link" href="#patterns">Patterns</a></li>
+        </ul>
+        <a class="btn btn--primary btn--sm" href="#inquiry">Inquire about a litter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===================== HERO (pigment band — signature) ===================== -->
+    <section class="hero" data-theme="pigment" id="top">
+      <div class="container">
+        <div class="hero__inner">
+          <span class="eyebrow">Hungarian livestock guardian · since the 9th c.</span>
+          <div class="hero__rule" aria-hidden="true"></div>
+          <h1 class="display">The white coat is the easy part. The character takes a thousand years.</h1>
+          <p class="hero__lede">A design system for a Kuvasz breeder — built around the breed's defining contrast of a lustrous white coat over deeply pigmented skin, and the calm, courageous temperament behind it.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#inquiry">Join the waitlist</a>
+            <a class="btn btn--secondary" href="#about" style="color: var(--color-text); border-color: var(--color-border-strong);">Meet the breed</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BREED FACTS ===================== -->
+    <section class="container section--tight" aria-label="Breed at a glance">
+      <div class="grid grid-4">
+        <div class="stat"><span class="stat__value">28&ndash;30&Prime;</span><span class="stat__label">Height · males</span></div>
+        <div class="stat"><span class="stat__value">100&ndash;115 lb</span><span class="stat__label">Weight · males</span></div>
+        <div class="stat"><span class="stat__value">10&ndash;12 yr</span><span class="stat__label">Lifespan</span></div>
+        <div class="stat"><span class="stat__value">1931</span><span class="stat__label">AKC recognized</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== TYPOGRAPHY ===================== -->
+    <section class="container sg-block" id="typography">
+      <div class="sg-block__head">
+        <span class="eyebrow">Foundations</span>
+        <h2>Typography</h2>
+        <p class="lede mt-2">Fraunces carries heritage in the headlines, Hanken Grotesk keeps the reading calm, and IBM Plex Mono gives pedigree data the look of a record on file.</p>
+      </div>
+
+      <div class="grid grid-3 mb-6">
+        <div class="card"><div class="card__body">
+          <p class="sg-label">Display — Fraunces</p>
+          <p style="font-family: var(--font-display); font-size: var(--text-3xl); line-height: 1.05;">Kővár</p>
+          <p class="card__text">Headlines, the wordmark, pull quotes. Used with restraint.</p>
+        </div></div>
+        <div class="card"><div class="card__body">
+          <p class="sg-label">Body / UI — Hanken Grotesk</p>
+          <p style="font-size: var(--text-xl);">Aa Bb Cc 123</p>
+          <p class="card__text">Paragraphs, navigation, buttons, forms, everything functional.</p>
+        </div></div>
+        <div class="card"><div class="card__body">
+          <p class="sg-label">Data — IBM Plex Mono</p>
+          <p style="font-family: var(--font-mono); font-size: var(--text-xl);">HD: OFA Good</p>
+          <p class="card__text">Measurements, dates, registration and clearance numbers.</p>
+        </div></div>
+      </div>
+
+      <div class="card"><div class="card__body">
+        <p class="sg-label">Type scale</p>
+        <div class="sg-spec"><span class="display">Display</span><span class="sg-spec__note">clamp 48&ndash;84px / 1.08</span></div>
+        <div class="sg-spec"><h1 style="margin:0;">Heading 1</h1><span class="sg-spec__note">64px / Fraunces 600</span></div>
+        <div class="sg-spec"><h2 style="margin:0;">Heading 2</h2><span class="sg-spec__note">36px / Fraunces 600</span></div>
+        <div class="sg-spec"><h3 style="margin:0;">Heading 3</h3><span class="sg-spec__note">28px / Fraunces 600</span></div>
+        <div class="sg-spec"><p class="lede" style="margin:0;">Lede paragraph</p><span class="sg-spec__note">18px / Hanken 400</span></div>
+        <div class="sg-spec"><p style="margin:0;">Body text</p><span class="sg-spec__note">16px / 1.65</span></div>
+        <div class="sg-spec"><span class="eyebrow" style="color:var(--color-text-muted);">Eyebrow label</span><span class="sg-spec__note">12px / Mono uppercase</span></div>
+      </div></div>
+    </section>
+
+    <!-- ===================== COLOR ===================== -->
+    <section class="container sg-block" id="color">
+      <div class="sg-block__head">
+        <span class="eyebrow">Foundations</span>
+        <h2>Color</h2>
+        <p class="lede mt-2">A lustrous coat canvas, a warm slate &ldquo;pigment&rdquo; ramp for ink and structure, one pasture green for action, and brass reserved for true heritage moments.</p>
+      </div>
+
+      <p class="sg-label">Slate / pigment</p>
+      <div class="sg-swatches mb-6">
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#faf9f6;border-bottom:1px solid var(--color-border)"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">slate-50 · bg</div><div class="sg-swatch__hex">#faf9f6</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#f1efe9"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">slate-100 · surface</div><div class="sg-swatch__hex">#f1efe9</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#cfcbbf"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">slate-300 · border</div><div class="sg-swatch__hex">#cfcbbf</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#7c7a6e"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">slate-500 · muted</div><div class="sg-swatch__hex">#7c7a6e</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#595849"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">slate-600 · secondary</div><div class="sg-swatch__hex">#595849</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#2a2a20"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">slate-800 · inverse</div><div class="sg-swatch__hex">#2a2a20</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#17170f"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">slate-900 · ink</div><div class="sg-swatch__hex">#17170f</div></div></div>
+      </div>
+
+      <p class="sg-label">Pasture — signature accent</p>
+      <div class="sg-swatches mb-6">
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#eef1ea"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">pasture-50 · tint</div><div class="sg-swatch__hex">#eef1ea</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#9db089"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">pasture-300</div><div class="sg-swatch__hex">#9db089</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#4c6740"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">pasture-600 · accent</div><div class="sg-swatch__hex">#4c6740</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#3c5333"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">pasture-700 · hover</div><div class="sg-swatch__hex">#3c5333</div></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#b5862e"></div><div class="sg-swatch__meta"><div class="sg-swatch__name">brass-500 · heritage</div><div class="sg-swatch__hex">#b5862e</div></div></div>
+      </div>
+
+      <p class="sg-label">Status</p>
+      <div class="sg-row">
+        <span class="badge badge--available">Available</span>
+        <span class="badge badge--reserved">Reserved</span>
+        <span class="badge badge--upcoming">Upcoming</span>
+        <span class="badge badge--placed">Placed</span>
+        <span class="badge badge--heritage">Champion line</span>
+      </div>
+    </section>
+
+    <!-- ===================== COMPONENTS ===================== -->
+    <section class="container sg-block" id="components">
+      <div class="sg-block__head">
+        <span class="eyebrow">Library</span>
+        <h2>Components</h2>
+      </div>
+
+      <!-- Buttons -->
+      <p class="sg-label">Buttons</p>
+      <div class="sg-row mb-6">
+        <button class="btn btn--primary">Join the waitlist</button>
+        <button class="btn btn--secondary">View pedigree</button>
+        <button class="btn btn--ghost">Read more</button>
+        <button class="btn btn--heritage">Champion line</button>
+        <button class="btn btn--primary" disabled>Litter full</button>
+      </div>
+      <div class="sg-row mb-6">
+        <button class="btn btn--primary btn--sm">Small</button>
+        <button class="btn btn--primary">Default</button>
+        <button class="btn btn--primary btn--lg">Large</button>
+      </div>
+
+      <!-- Chips -->
+      <p class="sg-label">Health clearances (chips)</p>
+      <div class="sg-row mb-6">
+        <span class="chip">Hips · OFA Good</span>
+        <span class="chip">Elbows · Normal</span>
+        <span class="chip">Eyes · CAER clear</span>
+        <span class="chip">Cardiac · clear</span>
+      </div>
+
+      <!-- Cards -->
+      <p class="sg-label">Puppy / litter cards</p>
+      <div class="grid grid-3 mb-6">
+        <article class="card card--interactive">
+          <div class="card__media"><span class="card__badge badge badge--available">Available</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Csaba</h3>
+            <p class="card__meta">Male · born 12 Apr 2026</p>
+            <p class="card__text">Bold, steady temperament. Reserved for an active family or working home.</p>
+          </div>
+          <div class="card__footer"><span class="text-mono text-sm text-muted">Litter H</span><a class="btn btn--ghost btn--sm" href="#">Details</a></div>
+        </article>
+        <article class="card card--interactive">
+          <div class="card__media"><span class="card__badge badge badge--reserved">Reserved</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Hanga</h3>
+            <p class="card__meta">Female · born 12 Apr 2026</p>
+            <p class="card__text">Affectionate and watchful. Going to a small farm in Vermont.</p>
+          </div>
+          <div class="card__footer"><span class="text-mono text-sm text-muted">Litter H</span><a class="btn btn--ghost btn--sm" href="#">Details</a></div>
+        </article>
+        <article class="card card--interactive">
+          <div class="card__media"><span class="card__badge badge badge--upcoming">Upcoming</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Litter J</h3>
+            <p class="card__meta">Expected · Sept 2026</p>
+            <p class="card__text">Planned pairing of Bástya Réka &times; Kővár Bendegúz. Waitlist open.</p>
+          </div>
+          <div class="card__footer"><span class="text-mono text-sm text-muted">Planned</span><a class="btn btn--ghost btn--sm" href="#">Join list</a></div>
+        </article>
+      </div>
+
+      <!-- Pedigree record + table -->
+      <div class="grid grid-2 mb-6">
+        <div>
+          <p class="sg-label">Pedigree record (signature)</p>
+          <div class="record">
+            <h3 class="record__title">Bástya Réka</h3>
+            <div class="record__row"><span class="record__key">Registration</span><span class="record__value">AKC WS-71422804</span></div>
+            <div class="record__row"><span class="record__key">Whelped</span><span class="record__value">2022-03-18</span></div>
+            <div class="record__row"><span class="record__key">Height</span><span class="record__value">27 in</span></div>
+            <div class="record__row"><span class="record__key">Weight</span><span class="record__value">84 lb</span></div>
+            <div class="record__row"><span class="record__key">Hips (OFA)</span><span class="record__value">Good</span></div>
+            <div class="record__row"><span class="record__key">DM (DNA)</span><span class="record__value">Clear</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="sg-label">Litter history (table)</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Litter</th><th>Whelped</th><th class="num">Pups</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><strong>H</strong></td><td class="text-mono">2026-04-12</td><td class="num">7</td><td><span class="badge badge--available">Available</span></td></tr>
+                <tr><td><strong>G</strong></td><td class="text-mono">2025-09-30</td><td class="num">6</td><td><span class="badge badge--placed">Placed</span></td></tr>
+                <tr><td><strong>F</strong></td><td class="text-mono">2025-02-14</td><td class="num">8</td><td><span class="badge badge--placed">Placed</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Callouts -->
+      <p class="sg-label">Callouts</p>
+      <div class="grid grid-2">
+        <div class="callout">
+          <div><p class="callout__title">Is a Kuvasz right for you?</p><p class="callout__body">Independent guardians bred to make their own decisions. They need secure space, early socialization, and an owner who leads with calm consistency.</p></div>
+        </div>
+        <div class="callout callout--warning">
+          <div><p class="callout__title">Waitlist, not a sale</p><p class="callout__body">We place puppies by fit, not by deposit order. Expect a conversation and a home check before a match is confirmed.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PATTERNS — inquiry form ===================== -->
+    <section class="container sg-block" id="patterns">
+      <div class="sg-block__head">
+        <span class="eyebrow">Patterns</span>
+        <h2>Inquiry form</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="card"><div class="card__body stack" id="inquiry">
+          <div class="field">
+            <label class="label" for="name">Your name <span class="req">*</span></label>
+            <input class="input" id="name" type="text" placeholder="Jane Kovács" />
+          </div>
+          <div class="field">
+            <label class="label" for="email">Email <span class="req">*</span></label>
+            <input class="input" id="email" type="email" placeholder="jane@example.com" />
+          </div>
+          <div class="field">
+            <label class="label" for="home">Tell us about your home</label>
+            <textarea class="textarea" id="home" placeholder="Acreage, fencing, other animals, experience with guardian breeds..."></textarea>
+            <span class="field__hint">The more you share, the better we can match a puppy to your home.</span>
+          </div>
+          <button class="btn btn--primary btn--block">Send inquiry</button>
+        </div></div>
+        <div class="stack">
+          <div class="record">
+            <h3 class="record__title">What happens next</h3>
+            <div class="record__row"><span class="record__key">Step 01</span><span class="record__value">We reply within 3 days</span></div>
+            <div class="record__row"><span class="record__key">Step 02</span><span class="record__value">A phone conversation</span></div>
+            <div class="record__row"><span class="record__key">Step 03</span><span class="record__value">Home check</span></div>
+            <div class="record__row"><span class="record__key">Step 04</span><span class="record__value">Match confirmed</span></div>
+          </div>
+          <div class="callout callout--info">
+            <div><p class="callout__title">Endangered heritage</p><p class="callout__body">Fewer than a few hundred Kuvasz are registered each year worldwide. Responsible placement keeps the working line alive.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER (pigment) ===================== -->
+  <footer class="footer" data-theme="pigment" id="about">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="nav__brand" href="#top" style="color: var(--color-text);">
+            <span class="nav__mark" aria-hidden="true" style="background: var(--color-text); color: var(--color-surface);">B</span>
+            Bástya Kuvasz
+          </a>
+          <p class="card__text" style="color: var(--color-text-secondary); max-width: 34ch;">A small Hungarian Kuvasz program breeding for health, temperament, and the working instinct the breed was built on.</p>
+        </div>
+        <div>
+          <p class="footer__title">The breed</p>
+          <ul class="footer__links">
+            <li><a href="#">History &amp; origins</a></li>
+            <li><a href="#">Temperament</a></li>
+            <li><a href="#">Health testing</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title">Our dogs</p>
+          <ul class="footer__links">
+            <li><a href="#">Available puppies</a></li>
+            <li><a href="#">Planned litters</a></li>
+            <li><a href="#">Our adults</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title">Connect</p>
+          <ul class="footer__links">
+            <li><a href="#inquiry">Inquire</a></li>
+            <li><a href="#">Waitlist</a></li>
+            <li><a href="#">Kuvasz Club of America</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Bástya Kuvasz · demo content for the design system</span>
+        <span class="text-mono">v1.0</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
